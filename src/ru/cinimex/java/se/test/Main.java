@@ -11,5 +11,8 @@ public class Main {
 
         oType.printInfo();
         oType2.printInfo();
+
+        oType.addOrderIndex(9, true);
+        oType.addOrderIndex(19, false);
     }
 }
