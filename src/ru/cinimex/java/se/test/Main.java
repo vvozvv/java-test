@@ -8,7 +8,7 @@ public class Main {
 
         OperationType oType = new OperationType(1L, "Plus", 10);
         OperationType oType2 = new OperationType(2L, "Minus", 20);
-//        oType.operationTypeName = "Plus";
+
         oType.printInfo();
         oType2.printInfo();
     }
