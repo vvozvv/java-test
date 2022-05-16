@@ -4,6 +4,25 @@ public class OperationType {
     public Long id;
     public String operationTypeName;
     public Integer orderIndex;
+    public OperationTypeCode operTypeCode;
+    public static String OPER_TYPE_STR = "Тип операции";
+    public static String ORDER_INDEX_STR = "Порядок сортировки";
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getOperationTypeName() {
+        return operationTypeName;
+    }
+
+    public Integer getOrderIndex() {
+        return orderIndex;
+    }
+
+    public OperationTypeCode getOperTypeCode() {
+        return operTypeCode;
+    }
 
     public OperationType(Long id, String operationTypeName, Integer orderIndex) {
         this.id = id;
@@ -15,10 +34,18 @@ public class OperationType {
         this.id = id;
         this.operationTypeName = null;
         this.orderIndex = null;
+        this.operTypeCode = null;
+    }
+
+    public OperationType(Long id, String operationTypeName, Integer orderIndex, OperationTypeCode operTypeCode) {
+        this.id = id;
+        this.operationTypeName = operationTypeName;
+        this.orderIndex = orderIndex;
+        this.operTypeCode = operTypeCode;
     }
 
     private String getInfoForPrint() {
-        return orderIndex + ":" + operationTypeName;
+        return this.id + "." + OPER_TYPE_STR + ":" + operationTypeName + ", " + ORDER_INDEX_STR + ":" + orderIndex + ", " + this.operTypeCode;
     }
 
     public void printInfo() {

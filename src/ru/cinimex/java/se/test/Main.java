@@ -1,6 +1,7 @@
 package ru.cinimex.java.se.test;
 
 import ru.cinimex.java.se.test.entity.OperationType;
+import ru.cinimex.java.se.test.entity.OperationTypeCode;
 
 import java.util.Arrays;
 
@@ -11,7 +12,7 @@ public class Main {
 
         // lesson 3.
         OperationType oType = new OperationType(1L);
-        OperationType oType2 = new OperationType(2L, "Minus", 20);
+        OperationType oType2 = new OperationType(2L, "Minus", 20, OperationTypeCode.JAVA);
         oType.addOrderIndex(9, true);
         oType2.addOrderIndex(19, false);
 
@@ -19,6 +20,7 @@ public class Main {
         oType.printInfo();
         oType2.printInfo();
 
+        // lesson 4.
         for (int i = 0; i < newArray.length; i++) {
             for (int j = 0; j < newArray[i].length; j++) {
                 newArray[i][j] = (int) (1 + Math.random() * 100);
