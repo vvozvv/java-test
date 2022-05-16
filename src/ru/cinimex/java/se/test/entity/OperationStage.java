@@ -1,5 +1,7 @@
 package ru.cinimex.java.se.test.entity;
 
+import java.util.Objects;
+
 public class OperationStage extends AbstractModel {
     String operationStageName;
     OperationStageCode operStageCode;
@@ -26,11 +28,26 @@ public class OperationStage extends AbstractModel {
     }
 
     public String getInfoForPrint() {
-        return this.operationStageName + " " + this.operStageCode;
+        StringBuffer sb = new StringBuffer();
+        sb.append(this.operationStageName).append(" ").append(this.operStageCode);
+        return sb.toString();
     }
 
     @Override
     public void printInfo() {
         System.out.println(getInfoForPrint());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OperationStage that = (OperationStage) o;
+        return Objects.equals(operationStageName, that.operationStageName) && operStageCode == that.operStageCode;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(operationStageName, operStageCode);
     }
 }

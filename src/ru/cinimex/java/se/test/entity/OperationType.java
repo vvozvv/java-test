@@ -1,5 +1,7 @@
 package ru.cinimex.java.se.test.entity;
 
+import java.util.Objects;
+
 public class OperationType extends AbstractModel {
     public Long id;
     public String operationTypeName;
@@ -45,7 +47,9 @@ public class OperationType extends AbstractModel {
     }
 
     public String getInfoForPrint() {
-        return this.id + "." + OPER_TYPE_STR + ":" + operationTypeName + ", " + ORDER_INDEX_STR + ":" + orderIndex + ", " + this.operTypeCode;
+        StringBuilder message = new StringBuilder();
+        message.append(this.id).append('.').append(OPER_TYPE_STR).append(":").append(operationTypeName).append(", ").append(ORDER_INDEX_STR).append(":").append(orderIndex).append(", ").append(this.operTypeCode);
+        return message.toString();
     }
 
     public void printInfo() {
@@ -76,7 +80,18 @@ public class OperationType extends AbstractModel {
                 default -> System.out.println("Ничего не найденно");
             }
         }
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OperationType that = (OperationType) o;
+        return Objects.equals(id, that.id) && Objects.equals(operationTypeName, that.operationTypeName) && Objects.equals(orderIndex, that.orderIndex) && operTypeCode == that.operTypeCode;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, operationTypeName, orderIndex, operTypeCode);
     }
 }

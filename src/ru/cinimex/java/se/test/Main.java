@@ -38,10 +38,12 @@ public class Main {
 //            System.out.println();
 //        }
 
-        // lesson 7
+        // lesson 7 && 8
         PrintServiceImpl ob = new PrintServiceImpl();
         OperationStage prints = new OperationStage("pechat", OperationStageCode.DONE);
+        OperationStage prints2 = new OperationStage("pechat", OperationStageCode.DONE);
         ob.printModel(prints);
         ob.printModel(oType2);
+        System.out.println(prints.hashCode() == prints2.hashCode());
     }
 }
