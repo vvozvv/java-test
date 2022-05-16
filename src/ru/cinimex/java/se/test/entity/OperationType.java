@@ -1,6 +1,6 @@
 package ru.cinimex.java.se.test.entity;
 
-public class OperationType {
+public class OperationType extends AbstractModel {
     public Long id;
     public String operationTypeName;
     public Integer orderIndex;
@@ -44,7 +44,7 @@ public class OperationType {
         this.operTypeCode = operTypeCode;
     }
 
-    private String getInfoForPrint() {
+    public String getInfoForPrint() {
         return this.id + "." + OPER_TYPE_STR + ":" + operationTypeName + ", " + ORDER_INDEX_STR + ":" + orderIndex + ", " + this.operTypeCode;
     }
 

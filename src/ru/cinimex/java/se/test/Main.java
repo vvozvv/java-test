@@ -1,7 +1,10 @@
 package ru.cinimex.java.se.test;
 
+import ru.cinimex.java.se.test.entity.OperationStage;
+import ru.cinimex.java.se.test.entity.OperationStageCode;
 import ru.cinimex.java.se.test.entity.OperationType;
 import ru.cinimex.java.se.test.entity.OperationTypeCode;
+import ru.cinimex.java.se.test.service.PrintServiceImpl;
 
 import java.util.Arrays;
 
@@ -21,18 +24,24 @@ public class Main {
         oType2.printInfo();
 
         // lesson 4.
-        for (int i = 0; i < newArray.length; i++) {
-            for (int j = 0; j < newArray[i].length; j++) {
-                newArray[i][j] = (int) (1 + Math.random() * 100);
-            }
-        }
+//        for (int i = 0; i < newArray.length; i++) {
+//            for (int j = 0; j < newArray[i].length; j++) {
+//                newArray[i][j] = (int) (1 + Math.random() * 100);
+//            }
+//        }
+//
+//        for (int[] anArr : newArray) {
+//            Arrays.sort(anArr);
+//            for (int anAnArr : anArr) {
+//                System.out.print(anAnArr + " ");
+//            }
+//            System.out.println();
+//        }
 
-        for (int[] anArr : newArray) {
-            Arrays.sort(anArr);
-            for (int anAnArr : anArr) {
-                System.out.print(anAnArr + " ");
-            }
-            System.out.println();
-        }
+        // lesson 7
+        PrintServiceImpl ob = new PrintServiceImpl();
+        OperationStage prints = new OperationStage("pechat", OperationStageCode.DONE);
+        ob.printModel(prints);
+        ob.printModel(oType2);
     }
 }
