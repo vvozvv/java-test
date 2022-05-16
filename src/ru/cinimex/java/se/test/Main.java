@@ -10,14 +10,14 @@ public class Main {
         System.out.println("Hello world");
 
         // lesson 3.
-        //  OperationType oType = new OperationType(1L, "Plus", 10);
-        //  OperationType oType2 = new OperationType(2L, "Minus", 20);
-        // oType.addOrderIndex(9, true);
-        // oType.addOrderIndex(19, false);
+        OperationType oType = new OperationType(1L);
+        OperationType oType2 = new OperationType(2L, "Minus", 20);
+        oType.addOrderIndex(9, true);
+        oType2.addOrderIndex(19, false);
 
         // lesson 2.
-        // oType.printInfo();
-        // oType2.printInfo();
+        oType.printInfo();
+        oType2.printInfo();
 
         for (int i = 0; i < newArray.length; i++) {
             for (int j = 0; j < newArray[i].length; j++) {

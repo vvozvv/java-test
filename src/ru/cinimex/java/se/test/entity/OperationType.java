@@ -11,12 +11,27 @@ public class OperationType {
         this.orderIndex = orderIndex;
     }
 
+    public OperationType(Long id) {
+        this.id = id;
+        this.operationTypeName = null;
+        this.orderIndex = null;
+    }
+
+    private String getInfoForPrint() {
+        return orderIndex + ":" + operationTypeName;
+    }
+
     public void printInfo() {
-        System.out.println("id = " + this.id + ", operationTypeName = " + this.operationTypeName + ", orderIndex = " + this.orderIndex);
+        System.out.println(getInfoForPrint());
     }
 
     public void addOrderIndex(int addIndex, boolean useIfBlockInsteadSwitch) {
         int remains = addIndex % 3;
+
+        if (this.orderIndex == null) {
+            System.out.println("orderIndex not found");
+            return;
+        }
 
         if (useIfBlockInsteadSwitch) {
             if (remains == 0) {
