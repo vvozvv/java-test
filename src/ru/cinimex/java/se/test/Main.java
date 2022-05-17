@@ -6,10 +6,11 @@ import ru.cinimex.java.se.test.entity.OperationType;
 import ru.cinimex.java.se.test.entity.OperationTypeCode;
 import ru.cinimex.java.se.test.exception.NegativeIdentifierException;
 import ru.cinimex.java.se.test.service.PrintServiceImpl;
+import ru.cinimex.java.se.test.service.SerializeServiceImpl;
 import ru.cinimex.java.se.test.service.StageCreateServiceImpl;
 import ru.cinimex.java.se.test.service.TypeCreateServiceImpl;
 
-import java.util.Arrays;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
@@ -50,7 +51,6 @@ public class Main {
         System.out.println(prints.hashCode() == prints2.hashCode());
 
         // lesson 9
-
         try {
             TypeCreateServiceImpl typeService = new TypeCreateServiceImpl();
             StageCreateServiceImpl typeService2 = new StageCreateServiceImpl();
@@ -62,6 +62,16 @@ public class Main {
             System.out.println("Объекты успешно создались");
         }
 
+        // lesson 10
+        try {
+            SerializeServiceImpl ss = new SerializeServiceImpl("C:\\Users\\avazhov\\Desktop\\project\\data.data");
+            SerializeServiceImpl ss2 = new SerializeServiceImpl("");
+            ss.serializeOperationType(oType);
+            ss2.serializeOperationType(oType2);
+            ss2.deserializeOperationType();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }

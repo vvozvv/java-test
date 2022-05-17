@@ -1,14 +1,24 @@
 package ru.cinimex.java.se.test.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class OperationType extends AbstractModel {
+public class OperationType extends AbstractModel implements Serializable {
     public Long id;
     public String operationTypeName;
     public Integer orderIndex;
     public OperationTypeCode operTypeCode;
     public static String OPER_TYPE_STR = "Тип операции";
     public static String ORDER_INDEX_STR = "Порядок сортировки";
+    public transient int operTypeNumber;
+
+    public int getOperTypeNumber() {
+        return operTypeNumber;
+    }
+
+    public void setOperTypeNumber(int operTypeNumber) {
+        this.operTypeNumber = operTypeNumber;
+    }
 
     public Long getId() {
         return id;
@@ -24,6 +34,13 @@ public class OperationType extends AbstractModel {
 
     public OperationTypeCode getOperTypeCode() {
         return operTypeCode;
+    }
+
+    public OperationType(Long id, String operationTypeName, OperationTypeCode operTypeCode, int operTypeNumber) {
+        this.id = id;
+        this.operationTypeName = operationTypeName;
+        this.operTypeCode = operTypeCode;
+        this.operTypeNumber = operTypeNumber;
     }
 
     public OperationType(Long id, String operationTypeName, Integer orderIndex) {
@@ -48,12 +65,21 @@ public class OperationType extends AbstractModel {
 
     public String getInfoForPrint() {
         StringBuilder message = new StringBuilder();
-        message.append(this.id).append('.').append(OPER_TYPE_STR).append(":").append(operationTypeName).append(", ").append(ORDER_INDEX_STR).append(":").append(orderIndex).append(", ").append(this.operTypeCode);
+        message.append(this.id).append('.').append(OPER_TYPE_STR)
+                .append(":").append(operationTypeName).append(", ")
+                .append(ORDER_INDEX_STR).append(":")
+                .append(orderIndex).append(", ")
+                .append(this.operTypeCode).append(", ")
+                .append(operTypeNumber);
         return message.toString();
     }
 
     public void printInfo() {
         System.out.println(getInfoForPrint());
+    }
+
+    public void getInfo() {
+        System.out.println();
     }
 
     public void addOrderIndex(int addIndex, boolean useIfBlockInsteadSwitch) {
