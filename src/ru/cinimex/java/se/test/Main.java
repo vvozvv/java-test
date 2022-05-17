@@ -4,7 +4,10 @@ import ru.cinimex.java.se.test.entity.OperationStage;
 import ru.cinimex.java.se.test.entity.OperationStageCode;
 import ru.cinimex.java.se.test.entity.OperationType;
 import ru.cinimex.java.se.test.entity.OperationTypeCode;
+import ru.cinimex.java.se.test.exception.NegativeIdentifierException;
 import ru.cinimex.java.se.test.service.PrintServiceImpl;
+import ru.cinimex.java.se.test.service.StageCreateServiceImpl;
+import ru.cinimex.java.se.test.service.TypeCreateServiceImpl;
 
 import java.util.Arrays;
 
@@ -45,5 +48,20 @@ public class Main {
         ob.printModel(prints);
         ob.printModel(oType2);
         System.out.println(prints.hashCode() == prints2.hashCode());
+
+        // lesson 9
+
+        try {
+            TypeCreateServiceImpl typeService = new TypeCreateServiceImpl();
+            StageCreateServiceImpl typeService2 = new StageCreateServiceImpl();
+            typeService.createModel(3L);
+            typeService2.createModel(4L);
+        } catch (NegativeIdentifierException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("Объекты успешно создались");
+        }
+
+
     }
 }
